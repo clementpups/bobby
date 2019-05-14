@@ -28,11 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/ping.jsp</name>
-			<type>1</type>
-			<location>/Users/clementpups/Documents/BobForce/WebContent/ping.jsp</location>
-		</link>
-	</linkedResources>
 </projectDescription>
