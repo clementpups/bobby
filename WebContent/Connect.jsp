@@ -16,11 +16,11 @@
 </head>
 <body>
 	<div class="row">
-    <form class="col s12" method="post" action="ConnectServet.java">
+    <form class="col s12" method="post" action="Connect">
       <div class="row">
         <div class="input-field col s6">
-          <input id="name" name="name" type="text" class="validate">
-          <label for="Pseudo">Pseudo</label>
+          <input id="email" name="email" type="email" class="validate">
+          <label for="Email">Email</label>
         </div>
       </div>
       <div class="row">

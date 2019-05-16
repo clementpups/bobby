@@ -19,10 +19,17 @@
 	<div class="row">
     <form class="col s12" method="post" action="CreatePostPage">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="post" name="post" type="text" class="validate">
+          <div class="input-field col s6">
+            <input id="input_text" type="text" data-length="10">
+            <label for="input_text">Titre</label>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" data-length="500"></textarea>
+            <label for="textarea2">Texte</label>
+          </div>
+        </div>
              
       <div class="row">
       	<button class="btn waves-effect waves-light" type="submit" value="Post">Post</button>

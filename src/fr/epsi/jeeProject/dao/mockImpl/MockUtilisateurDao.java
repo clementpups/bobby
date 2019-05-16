@@ -4,9 +4,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import fr.epsi.jeeProject.beans.Utilisateur;
 import fr.epsi.jeeProject.dao.IUtilisateurDao;
+import fr.epsi.jeeProject.dao.PercistenceManager;
 
 public class MockUtilisateurDao implements IUtilisateurDao {
 
@@ -17,6 +21,27 @@ public class MockUtilisateurDao implements IUtilisateurDao {
 		for (Utilisateur u : getListOfUtilisateur()) {
 			if (u.getEmail().equals(email))
 			return u;
+		}
+		return null;
+	}
+	
+	public Utilisateur connect(String email, String password) throws SQLException
+	{
+		
+		Connection connection = PercistenceManager.getConnection();
+		PreparedStatement logIn = connection.prepareStatement("select * from users where email=? and password =?");
+		logIn.setString(1, email);
+		logIn.setString(2, password);
+		ResultSet rs = logIn.executeQuery();
+		rs.next();
+		if(rs.getFetchSize() == 0)
+		{
+			Utilisateur user = new Utilisateur(rs.getString("email"),rs.getString("nom"),rs.getString("password"));
+			if(rs.getBoolean("IS_ADMIN") == true)
+			{
+				user.GrantAdminPrivilege(user);
+			}
+			return user;
 		}
 		return null;
 	}

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class CreatePostServlet
  */
 @WebServlet("/CreatePostServlet")
-public class CreateUserServlet extends HttpServlet {
+public class CreatePostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -36,10 +36,7 @@ public class CreateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String post = request.getPost("post");
 		
-		System.out.println(post);
-
 	}
 
 }

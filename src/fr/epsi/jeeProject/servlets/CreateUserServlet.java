@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import fr.epsi.jeeProject.beans.Utilisateur;;
 /**
  * Servlet implementation class CreateUserServlet
  */
@@ -36,9 +36,13 @@ public class CreateUserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		
 		String password= request.getParameter("password");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
+        
+        Utilisateur userCreated = new Utilisateur(email, password, name);
+        
         
         System.out.println(password);
         System.out.println(name);

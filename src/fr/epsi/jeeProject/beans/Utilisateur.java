@@ -6,9 +6,36 @@ public class Utilisateur {
 
 	private String email;
 	private String nom;
-	private String passord;
+	private String password;
 	private Date dateCreation;
 	private Boolean admin;
+	
+	public Utilisateur() {
+		this.admin  = false;
+		long millis=System.currentTimeMillis();
+		this.dateCreation = new java.sql.Date(millis);
+	}
+	
+	/**
+	 * 
+	 * @param email
+	 * @param nom
+	 * @param password
+	 */
+	
+	public Utilisateur(String email, String nom, String password) {
+		this.admin  = false;
+		long millis=System.currentTimeMillis();
+		this.dateCreation = new java.sql.Date(millis);
+		this.email = email;
+		this.nom = nom;
+		this.password = password;
+	}
+	
+	public void GrantAdminPrivilege (Utilisateur peon)
+	{
+		peon.admin = true;
+	}
 	
 	public String getEmail() {
 		return email;
@@ -22,11 +49,11 @@ public class Utilisateur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getPassord() {
-		return passord;
+	public String getPassword() {
+		return password;
 	}
-	public void setPassord(String passord) {
-		this.passord = passord;
+	public void setPassword(String passord) {
+		this.password = passord;
 	}
 	public Date getDateCreation() {
 		return dateCreation;

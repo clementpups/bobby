@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import= "javax.servlet.http.HttpSession, fr.epsi.jeeProject.beans.Utilisateur";%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,18 @@
           <label for="email">Email</label>
         </div>
       </div>
+      <%
+       	Utilisateur user = (Utilisateur)session.getAttribute("User");
+      	if(user.getAdmin() == true) { %>
+	      <div class="row">
+	      	<div class="input-field col s6">
+	      		<label>
+	        		<input type="checkbox" />
+	        		<span>Est Admin</span>
+	      		</label>
+	      	</div>
+	      </div> 
+      <% } %>
       <div class="row">
       	<button class="btn waves-effect waves-light" type="submit" value="Create">Create</button>
       </div>
