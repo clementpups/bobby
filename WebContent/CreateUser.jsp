@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import= "javax.servlet.http.HttpSession, fr.epsi.jeeProject.beans.Utilisateur";%>
+    pageEncoding="UTF-8" import= "javax.servlet.http.HttpSession,fr.epsi.jeeProject.beans.Utilisateur"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +40,7 @@
 	      <div class="row">
 	      	<div class="input-field col s6">
 	      		<label>
-	        		<input type="checkbox" />
+	        		<input type="checkbox" name="admin" id="admin"/>
 	        		<span>Est Admin</span>
 	      		</label>
 	      	</div>

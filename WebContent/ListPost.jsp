@@ -7,14 +7,20 @@
 <title>List post</title>
 </head>
 <body>
-
-	<% 
-	  List<Blog> list = (List<Blog>)request.getAttribute("list"); 
-	  System.out.println(list);
-	  for(Blog var : list ) { %>
-	  		<a  href="/SEAN/BlogServlet?post=<%= var.getId() %>">Numero:<%= var.getTitre() %> <%= var.getDescription() %> </a>
-  	<% } %> 
-  
+	<ul class="collection with-header">
+        <li class="collection-header"><h4>Liste des postes</h4></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+        <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+	   	<% 
+		  List<Blog> list = (List<Blog>)request.getAttribute("list");
+		  for(Blog var : list ) { %>
+		  		<li class="collection-item"><div><%= var.getTitre() %> <%= var.getDescription() %><a href="/jeePrject/BlogServlet?ShowBlog=<%= var.getId() %>" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+	  	<% } %> 
+   
+   
+    </ul>
 	<div class="row">
     <form class="col s12" method="post" action="ListPost">
     

@@ -6,7 +6,7 @@ import fr.epsi.jeeProject.beans.Utilisateur;
 
 public interface IUtilisateurDao {
 
-	Utilisateur getUtilisateur(String email);
+	Utilisateur getUtilisateur(String email) throws SQLException;
 	void createUtilisateur(Utilisateur utilisateur) throws SQLException;
 	void updateUtilisateur(Utilisateur utilisateur) throws SQLException;
 	void deleteUtilisateur(Utilisateur utilisateur) throws SQLException;

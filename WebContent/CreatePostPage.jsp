@@ -17,16 +17,16 @@
 
 <body>
 	<div class="row">
-    <form class="col s12" method="post" action="CreatePostPage">
+    <form class="col s12" method="post" action="CreatePostServlet">
       <div class="row">
           <div class="input-field col s6">
-            <input id="input_text" type="text" data-length="10">
+            <input id="titre" name="titre" type="text" data-length="10">
             <label for="input_text">Titre</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea2" class="materialize-textarea" data-length="500"></textarea>
+            <textarea id="texte" name="texte" class="materialize-textarea" data-length="500"></textarea>
             <label for="textarea2">Texte</label>
           </div>
         </div>
