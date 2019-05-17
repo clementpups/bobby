@@ -19,7 +19,7 @@ public class PercistenceManager {
         		
                 //Creating the connection with HSQLDB
         		DriverManager.registerDriver(new JDBCDriver());
-        		String url = "jdbc:hsqldb:hsql://localhost:9003";
+        		String url = "jdbc:hsqldb:hsql://localhost:9093";
         		String user = "SA";
         		String pass = "";
                 connection = DriverManager.getConnection(url, user, pass);

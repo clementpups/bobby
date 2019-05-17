@@ -10,10 +10,8 @@ import fr.epsi.jeeProject.jmx.ResponseJmx;
 
 
 
-import java.lang.management.ManagementFactory;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.MBeanRegistrationException;
-import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.NotCompliantMBeanException;
 import javax.management.ObjectName;
@@ -30,16 +28,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
+import fr.epsi.jeeProject.jmx.LogJmx;
+import fr.epsi.jeeProject.jmx.ResponseJmx;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+
 @WebListener()
 public class StartupListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
     // Public constructor is required by servlet spec
     public StartupListener() throws MalformedObjectNameException, InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException {
-    	ObjectName name = null;
-    	name = new ObjectName("fr.epsi.jeeProject:type=ResponseJmxMBean");
-    	ResponseJmx mbean = new ResponseJmx();
-    	MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-    	mbs.registerMBean(mbean, name);
+    	
     }
     // -------------------------------------------------------
     // ServletContextListener implementation
@@ -62,11 +62,44 @@ public class StartupListener implements ServletContextListener,
             e.printStackTrace();
         }
         try {
-            Connection con = DriverManager.getConnection("jdbc:hsqlbd:hsql://localhost:9003","SA","");
+            Connection con = DriverManager.getConnection("jdbc:hsqlbd:hsql://localhost:9093","SA","");
             System.out.println("connexion OK");
             con.close();
         }
         catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
+
+        ObjectName nameResponse = null;
+        ObjectName nameLog = null;
+        try {
+            nameResponse = new ObjectName("fr.epsi.jeeProject.jmx:type=ResponseJmxMBean");
+            nameLog = new ObjectName("fr.epsi.jeeProject.jmx:type=LogJmxMBean");
+
+            ResponseJmx mbeanResponse = new ResponseJmx();
+            LogJmx mbeanLog = new LogJmx();
+
+            mbs.registerMBean(mbeanResponse, nameResponse);
+            mbs.registerMBean(mbeanLog, nameLog);
+
+            // Supervision des fonctions pour la Jmx Response
+            mbeanResponse.getCommentaire();
+            mbeanResponse.setCommentaire("Test commentaire");
+
+            // Supervision des fonctions pour la Jmx Log
+            Configurator config = null;
+            config.setRootLevel(Level.ERROR);
+            mbeanLog.setLevelLogger(config);
+
+        } catch (MalformedObjectNameException e) {
+            e.printStackTrace();
+        } catch (NotCompliantMBeanException e) {
+            e.printStackTrace();
+        } catch (InstanceAlreadyExistsException e) {
+            e.printStackTrace();
+        } catch (MBeanRegistrationException e) {
             e.printStackTrace();
         }
     }
