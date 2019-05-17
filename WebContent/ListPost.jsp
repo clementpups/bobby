@@ -29,7 +29,7 @@
   		<% if(user.getAdmin() == true || user.getEmail() == var.getCreateur().getEmail()){ %>
   			<form action="delete" method="post">
 			    <input type="hidden" name="BlogId" value="<%=var.getId()%>" />
-			    <input type="submit" value="Delete" />
+			    <input type="submit" class="btn waves-light btn red right" value="Delete"/>
 			</form><% } %></div></li>
 	  	<% } %> 
    
