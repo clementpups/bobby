@@ -25,7 +25,7 @@
 		  List<Blog> list = (List<Blog>)request.getAttribute("list");
 		  for(Blog var : list ) { %>
 		  		<li class="collection-item"><div><%= var.getTitre() %> <%= var.getDescription() %>
-		  		<a href="/jeePrject/BlogServlet?ShowBlog=<%= var.getId() %>" class="secondary-content btn-floating waves-effect waves-light blue"><i class="material-icons">remove_red_eye</i></a>
+		  		<a href="/BobForce/BlogServlet?ShowBlog=<%= var.getId() %>" class="secondary-content btn-floating waves-effect waves-light blue"><i class="material-icons">remove_red_eye</i></a>
   		<% if(user.getAdmin() == true || user.getEmail() == var.getCreateur().getEmail()){ %>
   			<form action="delete" method="post">
 			    <input type="hidden" name="BlogId" value="<%=var.getId()%>" />
