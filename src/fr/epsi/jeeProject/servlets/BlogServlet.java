@@ -112,7 +112,7 @@ public class BlogServlet extends HttpServlet {
 		if (param != null) {
 			EditBlog = blogDao.getBlog(Integer.parseInt(param));
 		}
-		if(EditBlog!= null && (EditBlog.getCreateur().getEmail == user.getEmail() || user.getAdmin())) {
+		if(EditBlog!= null && (EditBlog.getCreateur().getEmail() == user.getEmail() || user.getAdmin())) {
 		param = request.getParameter("titre");
 		if(param != "")
 		EditBlog.setTitre(param);
@@ -121,7 +121,7 @@ public class BlogServlet extends HttpServlet {
 		if(param != "")
 		EditBlog.setDescription(param);
 		
-		EditBlog.setDateEdition(new Date(new java.util.Date().getTime()));
+		EditBlog.setDateModification(new Date(new java.util.Date().getTime()));
 		}
 		MockBlogDao BlogDAO = new MockBlogDao();
 		try {

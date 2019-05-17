@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"  import="java.util.List,fr.epsi.jeeProject.beans.Blog"%>
+    pageEncoding="ISO-8859-1"  import="java.util.List,fr.epsi.jeeProject.beans.Blog,fr.epsi.jeeProject.beans.Utilisateur"%>
 <!DOCTYPE html>
 <html>
 <head>

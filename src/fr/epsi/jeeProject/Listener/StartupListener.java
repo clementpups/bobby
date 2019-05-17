@@ -6,7 +6,9 @@ import fr.epsi.jeeProject.beans.Blog;
 import fr.epsi.jeeProject.beans.Utilisateur;
 import fr.epsi.jeeProject.dao.IBlogDao;
 import fr.epsi.jeeProject.dao.mockImpl.MockBlogDao;
-import org.apache.logging.log4j.Logger;
+import fr.epsi.jeeProject.jmx.ResponseJmx;
+
+
 
 import java.lang.management.ManagementFactory;
 import javax.management.InstanceAlreadyExistsException;
@@ -32,7 +34,7 @@ import java.util.List;
 public class StartupListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
     // Public constructor is required by servlet spec
-    public StartupListener() {
+    public StartupListener() throws MalformedObjectNameException, InstanceAlreadyExistsException, MBeanRegistrationException, NotCompliantMBeanException {
     	ObjectName name = null;
     	name = new ObjectName("fr.epsi.jeeProject:type=ResponseJmxMBean");
     	ResponseJmx mbean = new ResponseJmx();
